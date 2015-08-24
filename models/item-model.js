@@ -3,10 +3,9 @@
 var mongoose = require('mongoose');
 
 var itemSchema = new mongoose.Schema({
-  creator: {type: String},
-  name: {type: String},
-  url: {type: String},
+  category: {type: String},
   description: {type: String},
+  url: {type: String},
   promised: {type: Boolean, default: false}
 });
 

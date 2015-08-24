@@ -8,6 +8,7 @@ process.env.secret = process.env.secret || 'This is not secure!';
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 var mongoUri = process.env.MONGO_WISHLIST_APP_URI || 'mongodb://localhost/wishlistApp';

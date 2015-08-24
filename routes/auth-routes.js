@@ -14,6 +14,7 @@ module.exports = function(router) {
         } else if (!user.checkPassword(req.body.password)) {
           res.json({success:false, msg: 'Authenticattion failed. Password does not match.'});
         } else {
+          var token = jwt.sign(user, process.env.SECRET, {expiresInMinutes: 5});
           res.json({success: true, msg: 'Authentication successful.', token: jwt.sign(user, process.env.secret, {expiresInMinutes: 10080})});
         }
       }

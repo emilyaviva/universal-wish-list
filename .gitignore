@@ -16,3 +16,6 @@ node_modules
 # Local testing MongoDB
 db
 
+public/index.html
+public/bundle.js
+public

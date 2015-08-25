@@ -24,11 +24,7 @@ module.exports = React.createClass({
          <button className="btn-category"><img className="category" src="lib/sedan3.png" /></button>
        </section>
 
-       <form className="frm-add-item">
-         <input className="input-add-item" type="text" placeholder="Item name" />
-         <input className="input-add-item" type="text" placeholder="Item url" />
-         <button>Add new</button>
-       </form>
+       //Place AddItemForm.jsx here
 
        <article className="article-item">
          <section className="description">

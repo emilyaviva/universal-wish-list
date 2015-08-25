@@ -123,7 +123,7 @@ module.exports = function(router) {
         return console.error(err);
       }
       Item.update({_id: req.params.item_id}, req.body, function(err, message) {
-        if (err || !item) {
+        if (err) {
           res.status(500).json({msg: 'server error'});
           return console.error(err);
         }

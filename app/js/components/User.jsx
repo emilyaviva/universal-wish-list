@@ -30,7 +30,7 @@ module.exports = React.createClass({
          <button>Add new</button>
        </form>
 
-       <article>
+       <article className="article-item">
          <section className="description">
            <h2>Under Armour Compression Shirt</h2>
            <a className="view-link" href="https://www.underarmour.com/en-us/under-armour-alter-ego-compression-  tshirt/pid1244399-006"><button>view</button></a>
@@ -41,7 +41,7 @@ module.exports = React.createClass({
          </section>
        </article>
 
-       <article>
+       <article className="article-item">
          <section className="description">
            <h2>Garmin Fenix 3 GPS Watch</h2>
            <a className="view-link" href="http://www.rei.com/product/884614/garmin-fenix-3-gps-watch"><button>view</button></a>

@@ -33,7 +33,7 @@ var App = React.createClass({displayName: "App",
     return (
       React.createElement("div", {className: "home"}, 
         React.createElement(Nav, null), 
-        React.createElement(Guest, null), 
+        React.createElement(User, null), 
         React.createElement(Footer, null), 
         React.createElement(Video, null)
       )
@@ -183,7 +183,7 @@ module.exports = React.createClass({displayName: "exports",
          React.createElement("button", null, "Add new")
        ), 
 
-       React.createElement("article", null, 
+       React.createElement("article", {className: "article-item"}, 
          React.createElement("section", {className: "description"}, 
            React.createElement("h2", null, "Under Armour Compression Shirt"), 
            React.createElement("a", {className: "view-link", href: "https://www.underarmour.com/en-us/under-armour-alter-ego-compression-  tshirt/pid1244399-006"}, React.createElement("button", null, "view"))
@@ -194,7 +194,7 @@ module.exports = React.createClass({displayName: "exports",
          )
        ), 
 
-       React.createElement("article", null, 
+       React.createElement("article", {className: "article-item"}, 
          React.createElement("section", {className: "description"}, 
            React.createElement("h2", null, "Garmin Fenix 3 GPS Watch"), 
            React.createElement("a", {className: "view-link", href: "http://www.rei.com/product/884614/garmin-fenix-3-gps-watch"}, React.createElement("button", null, "view"))

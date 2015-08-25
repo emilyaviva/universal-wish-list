@@ -5,7 +5,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div id="userView">
-        <header>
+        <header className="title-header">
          <section id="icon-section">
            <img id="icon" src="lib/wishlist.png" />
          </section>
@@ -24,9 +24,9 @@ module.exports = React.createClass({
          <button className="btn-category"><img className="category" src="lib/sedan3.png" /></button>
        </section>
 
-       <form>
-         <input type="text" placeholder="Item name" />
-         <input type="text" placeholder="Item url" />
+       <form className="frm-add-item">
+         <input className="input-add-item" type="text" placeholder="Item name" />
+         <input className="input-add-item" type="text" placeholder="Item url" />
          <button>Add new</button>
        </form>
 

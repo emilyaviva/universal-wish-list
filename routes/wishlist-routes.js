@@ -36,7 +36,9 @@ module.exports = function(router) {
   // POST to create a new wishlist
   router.post('/wishlists', function(req, res) {
     new Wishlist({
-
+      name: req.body.name,
+      creator: req.body.creator,
+      items: req.body.items
     }).save(function(err, data) {
       if (err) {
         res.status(500).json({msg: 'server error'});
@@ -67,5 +69,5 @@ module.exports = function(router) {
       else res.json({msg: 'wishlist deleted'});
     });
   });
-  
+
 };

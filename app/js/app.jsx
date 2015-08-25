@@ -5,7 +5,7 @@ var Nav = require('./components/Nav.jsx');
 var Footer = require('./components/Footer.jsx');
 var Main = require('./components/Main.jsx');
 var User = require('./components/User.jsx');
-var Guest = request('./components/Guest.jsx');
+var Guest = require('./components/Guest.jsx');
 
 // Main App
 var App = React.createClass({
@@ -32,7 +32,7 @@ var App = React.createClass({
     return (
       <div className="home">
         <Nav />
-        <Main />
+        <User />
         <Footer />
         <Video />
       </div>

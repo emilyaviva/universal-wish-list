@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var User = require('../models/user-model');
 var Wishlist = require('../models/wishlist-model');
 var Item = require('../models/item-model');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jsonwebtoken');
 var verify = require('../middlewares/verify');
 

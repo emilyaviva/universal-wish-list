@@ -129,7 +129,7 @@ footer {
   display: inline-block;
 }
 
-header {
+.title-header {
   margin-bottom: 3em;
 }
 
@@ -148,7 +148,7 @@ header {
   background-color: white;
 }
 
-form {
+.frm-add-item {
   border-style: solid;
   width: 40em;
   margin-left: auto;
@@ -158,12 +158,12 @@ form {
   text-align: center;
 }
 
-input {
+.input-add-item {
   height: 2em;
   border-color: solid;
 }
 
-article {
+.article-item {
   border-style: solid;
   width: 40em;
   margin-left: auto;

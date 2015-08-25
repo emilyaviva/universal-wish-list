@@ -29,6 +29,11 @@ gulp.task('browserify:watch', function() {
   gulp.watch('./app/js/**/*.jsx', ['browserify']);
 });
 
+gulp.task('copy:images', function() {
+  return gulp.src('./app/img/**/*')
+    .pipe(gulp.dest('./public/img/'));
+});
+
 gulp.task('copy', function() {
   var opts = {
     conditionals: true,
@@ -42,7 +47,6 @@ gulp.task('copy:watch', function() {
   gulp.watch('./app/**/*.html', ["copy"]);
 });
 
-gulp.task('build', ['copy', 'browserify', 'sass', 'copy:watch',
-    'browserify:watch', 'sass:watch']);
+gulp.task('build', ['copy', 'copy:images', 'browserify', 'sass', 'copy:watch', 'browserify:watch', 'sass:watch']);
 
 gulp.task('default', ['build']);

@@ -33,7 +33,7 @@ var App = React.createClass({displayName: "App",
     return (
       React.createElement("div", {className: "home"}, 
         React.createElement(Nav, null), 
-        React.createElement(Guest, null), 
+        React.createElement(Main, null), 
         React.createElement(Footer, null), 
         React.createElement(Video, null)
       )

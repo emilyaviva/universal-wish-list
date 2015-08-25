@@ -32,7 +32,7 @@ var App = React.createClass({
     return (
       <div className="home">
         <Nav />
-        <Guest />
+        <Main />
         <Footer />
         <Video />
       </div>

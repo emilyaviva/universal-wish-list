@@ -1,5 +1,11 @@
 var React = require('react');
 var request = require('superagent');
+var Video = require('./components/Video.jsx');
+var Nav = require('./components/Nav.jsx');
+var Footer = require('./components/Footer.jsx');
+var Main = require('./components/Main.jsx');
+var User = require('./components/User.jsx');
+var Guest = request('./components/Guest.jsx');
 
 // Main App
 var App = React.createClass({
@@ -24,8 +30,11 @@ var App = React.createClass({
 
   render: function() {
     return (
-      <div>
-        {this.state.wishlists}
+      <div className="home">
+        <Nav />
+        <Main />
+        <Footer />
+        <Video />
       </div>
     );
   }

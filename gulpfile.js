@@ -5,6 +5,8 @@ var sass = require('gulp-sass');
 var browserify = require('browserify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream');
+var mocha = require('gulp-mocha');
+var exit = require('gulp-exit');
 
 gulp.task('sass', function() {
   gulp.src('./app/sass/**/*.scss')
@@ -45,6 +47,12 @@ gulp.task('copy', function() {
 
 gulp.task('copy:watch', function() {
   gulp.watch('./app/**/*.html', ["copy"]);
+});
+
+gulp.task('test', function() {
+  return gulp.src('./test/mocha-tests/*.js')
+    .pipe(mocha())
+    .pipe(exit());
 });
 
 gulp.task('build', ['copy', 'copy:images', 'browserify', 'sass', 'copy:watch', 'browserify:watch', 'sass:watch']);

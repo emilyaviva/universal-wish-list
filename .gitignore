@@ -17,5 +17,5 @@ node_modules
 db
 
 public/index.html
-public/bundle.js
+public/js/bundle.js
 public

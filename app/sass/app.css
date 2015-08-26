@@ -12,16 +12,42 @@ body {
 }
 
 .navWrapper {
-    -webkit-box-shadow: 0px 97px 26px 6px rgba(0,0,0,0.34);
-    -moz-box-shadow: 0px 97px 26px 6px rgba(0,0,0,0.34);
-    box-shadow: 0px 97px 26px 6px rgba(0,0,0,0.34);
+    -webkit-box-shadow: 0px 1px 26px 6px rgba(0,0,0,0.34);
+    -moz-box-shadow: 0px 1px 26px 6px rgba(0,0,0,0.34);
+    box-shadow: 0px 1px 26px 6px rgba(0,0,0,0.34);
 }
 
 #nav {
     color: white;
-    padding:10px;
+    padding:15px;
     background:#aa6644;
     text-align: right;
+}
+
+#footer {
+    color: white;
+    z-index: 1;
+    background:#aa6644;
+    width:100%;
+    height: 3em;
+    position:absolute;
+    bottom:0;
+    left:0;
+    padding: 1.5em 1em 1em 1em;
+    text-align: center;
+    -webkit-box-shadow: 0px 1px 26px 6px rgba(0,0,0,0.34);
+    -moz-box-shadow: 0px 1px 26px 6px rgba(0,0,0,0.34);
+    box-shadow: 0px 1px 26px 6px rgba(0,0,0,0.34);
+}
+
+#footer span {
+    color: #e5e5e5;
+    border-left: solid;
+    padding-left: 20px;
+}
+
+#homeLink {
+    float: left;
 }
 
 .headline-wrapper {
@@ -53,21 +79,10 @@ body {
     font-size: 1em;
 }
 
-footer {
-    color: white;
-    z-index: 1;
-    background:#aa6644;
-    width:100%;
-    height:100px;
-    position:absolute;
-    bottom:0;
-    left:0;
-    padding-top: 20px;
-    text-align: center;
-    -webkit-box-shadow: 0px 1px 26px 6px rgba(0,0,0,0.34);
-    -moz-box-shadow: 0px 1px 26px 6px rgba(0,0,0,0.34);
-    box-shadow: 0px 1px 26px 6px rgba(0,0,0,0.34);
-}
+
+/******************************************
+    Landing Page Video
+******************************************/
 
 .homepage-hero-module {
     border-right: none;
@@ -186,3 +201,31 @@ footer {
   height: 3em;
   width: 3em;
 }
+
+
+/****************************************
+   Links and Psuedo Selectors
+****************************************/
+
+.navLinks, .footerLinks {
+    color: #e5e5e5;
+    text-decoration: none;
+    margin: 0 20px;
+}
+
+.navLinks:hover, .footerLinks:hover {
+     color:#f3f3f3;
+     cursor:pointer;
+}
+
+.navLinks:active, .footerLinks:active {
+     color:#ccc;
+     cursor:pointer;
+}
+
+
+
+
+
+
+

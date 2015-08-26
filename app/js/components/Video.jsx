@@ -7,7 +7,7 @@ module.exports = React.createClass({
         <div className="video-container">
           <div className="filter"></div>
             <video autoPlay loop className="fillWidth">
-              <source src="..lib/For_Wes.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+              <source src="../lib/For_Wes.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
               <source src="../lib/For_Wes.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
             </video>
           <div class="poster hidden">

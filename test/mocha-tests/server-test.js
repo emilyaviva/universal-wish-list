@@ -6,7 +6,6 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var expect = chai.expect;
 
-var User = require('../../models/user-model');
 var Wishlist = require('../../models/wishlist-model');
 var Item = require('../../models/item-model');
 
@@ -29,13 +28,13 @@ describe('wishlist management REST API', function() {
 
   it('should create a new wishlist on POST', function(done) {
     chai.request(host)
-      .post('/api/wishlists')
-      .send({name: 'test', items: ['a', 'b', 'c'], creator: 'user', _id: 1})
+      .post('/api/w')
+      .send({name: 'test', items: [], creator: 'user', _id: 1})
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.body).to.have.property('_id');
         expect(res.body.name).to.eql('test');
-        expect(res.body.items).to.have.length(3);
+        expect(Array.isArray(res.body.items)).to.eql(true);
         expect(res.body.creator).to.eql('user');
         done();
       });
@@ -43,7 +42,7 @@ describe('wishlist management REST API', function() {
 
   it('should GET an array of all resources', function(done) {
     chai.request(host)
-      .get('/api/wishlists')
+      .get('/api/w')
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(typeof res.body).to.eql('object');
@@ -52,12 +51,11 @@ describe('wishlist management REST API', function() {
       });
   });
 
-  describe('working on test object', function() {
+  describe('working on test objects', function() {
 
     beforeEach(function(done) {
       var testObject = new Wishlist({
         name: 'Test Wishlist',
-        items: ['one item', 'two items', 'three items'],
         creator: 'test user'
       });
       testObject.save(function(err, data) {
@@ -70,14 +68,13 @@ describe('wishlist management REST API', function() {
     it('should make an object in a beforeEach block', function() {
       expect(this.testObject.name).to.eql('Test Wishlist');
       expect(Array.isArray(this.testObject.items)).to.eql(true);
-      expect(this.testObject.items).to.have.length(3);
       expect(this.testObject).to.have.property('_id');
     });
 
     it('should PUT an object and update it', function(done) {
       var id = this.testObject._id;
       chai.request(host)
-        .put('/api/wishlists/' + id)
+        .put('/api/w/' + id)
         .send({name: 'Test Wishlist Renamed'})
         .end(function(err, res) {
           expect(err).to.eql(null);
@@ -91,13 +88,55 @@ describe('wishlist management REST API', function() {
     it('should DELETE an object', function(done) {
       var id = this.testObject._id;
       chai.request(host)
-        .delete('/api/wishlists/' + id)
+        .delete('/api/w/' + id)
         .end(function(err, res) {
           expect(err).to.eql(null);
           expect(res.body.msg).to.eql('wishlist deleted');
           done();
       });
     });
+
+  });
+
+  describe('working on test item', function() {
+
+    beforeEach(function(done) {
+      var testItem = new Item({
+        description: 'test description',
+        url: 'test url',
+        wishlist: 'test wishlist'
+      });
+      testItem.save(function(err, data) {
+        if (err) throw err;
+        this.testItem = data;
+        done();
+      }.bind(this));
+    });
+
+    it('should make an object in a beforeEach block', function() {
+      expect(this.testItem.description).to.eql('test description');
+      expect(this.testItem.url).to.eql('test url');
+      expect(this.testItem.wishlist).to.eql('test wishlist');
+      expect(this.testItem.promised).to.eql(false);
+      expect(this.testItem).to.have.property('_id');
+    });
+
+/*
+    it('should POST an item', function(done) {
+      var id = this.testItem._id;
+      chai.request(host)
+        .post('/api/w/' + id + '/items')
+        .send({description: 'some item', url: 'some url'})
+        .end(function(err, res) {
+          expect(err).to.eql(null);
+          expect(res.body.description).to.eql('some item');
+          expect(res.body.url).to.eql('some url');
+          expect(res.body.promised).to.eql(false);
+          expect(res.body.wishlist).to.eql(id);
+          done();
+      });
+    });
+*/
 
   });
 

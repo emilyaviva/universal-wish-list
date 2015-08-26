@@ -6,9 +6,6 @@ var Footer = require('./components/Footer.jsx');
 var Main = require('./components/Main.jsx');
 var User = require('./components/User.jsx');
 var Guest = require('./components/Guest.jsx');
-var AddItemForm = require('./components/AddItemForm.jsx');
-var UserItemList = require('./components/UserItemList.jsx');
-var GuestItemList = require('./components/GuestItemList.jsx');
 
 // Main App
 var App = React.createClass({

@@ -4,7 +4,7 @@ var React = require('react');
 module.exports = React.createClass({
   render: function() {
     return (
-      <div id="guestView">
+      <main id="guest-view">
 
         <header className="title-header">
           <section id="icon-section">
@@ -47,8 +47,9 @@ module.exports = React.createClass({
           </section>
         </article>
 
-        <div>Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-      </div>
+        <div className="credit">Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+
+      </main>
     );
   }
 })

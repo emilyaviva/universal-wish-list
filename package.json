@@ -33,10 +33,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
-<<<<<<< HEAD
     "jquery": "^2.1.4",
-=======
->>>>>>> 00951ba71eddaead0c50c6b7c384fff920de2e80
     "jsonwebtoken": "^5.0.4",
     "mongoose": "^4.1.3"
   },

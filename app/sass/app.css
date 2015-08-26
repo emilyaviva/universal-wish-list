@@ -26,11 +26,12 @@ body {
 
 #footer {
     color: white;
+    clear: both;
     z-index: 1;
     background:#aa6644;
     width:100%;
     height: 3em;
-    position:absolute;
+    position:fixed;
     bottom:0;
     left:0;
     padding: 1.5em 1em 1em 1em;
@@ -130,6 +131,12 @@ body {
 
 /********************************************/
 
+/* Main */
+#user-view {
+
+}
+
+/* Header */
 #icon-section {
   display: inline-block;
 }
@@ -148,6 +155,7 @@ body {
   margin-bottom: 3em;
 }
 
+/* Buttons for selecting category */
 .category {
   height: 5em;
   width: 5em;
@@ -163,6 +171,8 @@ body {
   background-color: white;
 }
 
+/* User form for adding items */
+
 .frm-add-item {
   border-style: solid;
   width: 40em;
@@ -176,7 +186,14 @@ body {
 .input-add-item {
   height: 2em;
   border-color: solid;
+  margin: 1em;
 }
+
+#btn-add-name {
+  margin: 1em;
+}
+
+/* Item list */
 
 .article-item {
   border-style: solid;
@@ -185,6 +202,7 @@ body {
   margin-right: auto;
   margin-bottom: 2em;
   padding: 1em;
+  display: block;
 }
 
 .description {
@@ -200,6 +218,10 @@ body {
 .unchecked-box {
   height: 3em;
   width: 3em;
+}
+
+.credit {
+  margin-bottom: 10em;
 }
 
 

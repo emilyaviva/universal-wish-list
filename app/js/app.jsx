@@ -1,15 +1,23 @@
 var React = require('react');
 var request = require('superagent');
+var Header = require('./components/Header.jsx');
 var Footer = require('./components/Footer.jsx');
 var Home = require('./components/Home.jsx');
 var User = require('./components/User.jsx');
 var Guest = require('./components/Guest.jsx');
+// var $Video = require('./jQuery/video.js');
+var $header = require('./jQuery/header.js');
 var Router = require('react-router');
 var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
 var NotFoundRoute = Router.NotFoundRoute;
 var Link = Router.Link;
+
+// Execute imported jQuery here:
+
+// $Video();
+$header();
 
 // Main App
 var App = React.createClass({
@@ -20,7 +28,7 @@ var App = React.createClass({
   },
   componentDidMount: function() {
     request
-      .get('/api/wishlists')
+      .get('/api/w')
       .end(function(err, res) {
         console.log(res);
         this.setState({
@@ -31,7 +39,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div className="home">
-        <Nav />
+        <Header />
         <RouteHandler />
         <Footer />
       </div>
@@ -54,19 +62,7 @@ var routes = (
   </Route>
 );
 
-var Nav = React.createClass({
-  render: function() {
-    return (
-      <section className="navWrapper">
-        <nav id="nav">
-          <Link to="user" className="navLinks"> Create List </Link>
-          <Link to="guest" className="navLinks"> View List</Link>
-          <Link to="home" className="navLinks" id="homeLink"> Home </Link>
-        </nav>
-      </section>
-    );
-  }
-});
+
 
 Router.run(routes, function (Handler) {
   React.render(<Handler/>, document.getElementById('content'));

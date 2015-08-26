@@ -1,7 +1,8 @@
 var $ = require('jquery');
 
 // jQuery
-  $( document ).ready(function() {
+module.exports = function() {
+  $(document).ready(function() {
 
       scaleVideoContainer();
 
@@ -63,4 +64,4 @@ var $ = require('jquery');
 
       });
   }
-
+}

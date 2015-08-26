@@ -40,7 +40,6 @@ module.exports = React.createClass({
             <button className="btn-delete">Delete Item</button>
           </section>
         </article>
-
         <article className="article-item">
           <section className="description">
             <h2>Garmin Fenix 3 GPS Watch</h2>
@@ -50,7 +49,6 @@ module.exports = React.createClass({
             <button className="btn-delete">Delete Item</button>
           </section>
         </article>
-
       </div>
     )
   }

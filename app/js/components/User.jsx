@@ -1,5 +1,4 @@
 var React = require('react');
-var AddItemForm = require('./AddItemForm.jsx');
 
 // User View
 module.exports = React.createClass({

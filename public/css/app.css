@@ -1,0 +1,209 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Helvetica;
+  background-color: rgba(255, 255, 255, 0.5); }
+
+#content {
+  min-height: 100%;
+  position: relative; }
+
+#header {
+  color: white;
+  font-size: 1.15em;
+  padding: 20px;
+  background: #aa6644;
+  text-align: right;
+  -webkit-box-shadow: 0px 1px 26px 6px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 0px 1px 26px 6px rgba(0, 0, 0, 0.34);
+  box-shadow: 0px 1px 26px 6px rgba(0, 0, 0, 0.34); }
+
+.headerWrapper > input, button {
+  margin: 0 0.5em; }
+
+#footer {
+  color: white;
+  clear: both;
+  z-index: 1;
+  background: #aa6644;
+  width: 100%;
+  height: 2em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 1.5em 1em 1em 1em;
+  text-align: center;
+  -webkit-box-shadow: 0px 1px 26px 6px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 0px 1px 26px 6px rgba(0, 0, 0, 0.34);
+  box-shadow: 0px 1px 26px 6px rgba(0, 0, 0, 0.34); }
+
+#footer span {
+  color: #e5e5e5;
+  border-left: solid;
+  padding-left: 20px; }
+
+#homeLink {
+  float: left; }
+
+.headline-wrapper {
+  font-family: 'Work Sans', sans-serif;
+  z-index: 1;
+  background: transparent;
+  color: white;
+  width: 100%;
+  height: 65%;
+  padding-top: 200px;
+  position: absolute;
+  text-align: center;
+  position: absolute;
+  text-align: center;
+  text-shadow: 1px 1px 1px #969696;
+  background-color: rgba(50, 50, 50, 0.5);
+  font-size: 2em;
+  -webkit-box-shadow: inset 0 3px 26px 6px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: inset 0 3px 26px 6px rgba(0, 0, 0, 0.34);
+  box-shadow: inset 0 3px 26px 6px rgba(0, 0, 0, 0.34); }
+
+.headline-wrapper h1 {
+  margin-bottom: 0; }
+
+.headline-wrapper h2 {
+  margin-top: 10px;
+  font-size: 1em; }
+
+/******************************************
+    Landing Page Video
+******************************************/
+.homepage-hero-module {
+  border-right: none;
+  border-left: none;
+  position: relative; }
+
+.no-video .video-container video,
+.touch .video-container video {
+  display: none; }
+
+.no-video .video-container .poster,
+.touch .video-container .poster {
+  display: block !important; }
+
+.video-container {
+  position: relative;
+  bottom: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #000; }
+
+.video-container .poster img {
+  width: 100%;
+  bottom: 0;
+  position: absolute; }
+
+.video-container .filter {
+  z-index: 100;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%; }
+
+.video-container video {
+  position: absolute;
+  z-index: 0;
+  bottom: 0; }
+
+.video-container video.fillWidth {
+  width: 100%; }
+
+/********************************************
+
+/********************************************/
+/* Main */
+/* Header */
+#icon-section {
+  display: inline-block; }
+
+#icon {
+  height: 5em;
+  width: 7em;
+  margin-right: 3em; }
+
+#header-nav {
+  display: inline-block; }
+
+.title-header {
+  margin-bottom: 3em; }
+
+/* Buttons for selecting category */
+.category {
+  height: 5em;
+  width: 5em; }
+
+#category-section {
+  margin-bottom: 3em;
+  text-align: center; }
+
+.btn-category {
+  border-radius: 10%;
+  background-color: white; }
+
+/* User form for adding items */
+.frm-add-item {
+  border-style: solid;
+  width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  padding: 1em;
+  text-align: center; }
+
+.input-add-item {
+  height: 2em;
+  border-color: solid;
+  margin: 1em; }
+
+#btn-add-name {
+  margin: 1em; }
+
+/* Item list */
+.article-item {
+  border-style: solid;
+  width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  padding: 1em;
+  display: block; }
+
+.description {
+  display: inline-block; }
+
+.committed-to {
+  margin-top: 1em;
+  display: inline-block;
+  float: right; }
+
+.unchecked-box {
+  height: 3em;
+  width: 3em; }
+
+.credit {
+  margin-bottom: 10em; }
+
+/****************************************
+   Links and Psuedo Selectors
+****************************************/
+.headerLinks, .footerLinks {
+  color: #e5e5e5;
+  text-decoration: none;
+  margin: 0 20px; }
+
+.headerLinks:hover, .footerLinks:hover {
+  color: #f3f3f3;
+  cursor: pointer; }
+
+.headerLinks:active, .footerLinks:active {
+  color: #ccc;
+  cursor: pointer; }

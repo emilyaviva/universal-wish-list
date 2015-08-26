@@ -10,11 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/emilyaviva/universal-wish-list.git"
   },
-  "author": "Emily Aviva Kapor-Mater",
+  "author": {
+    "name": "Emily Aviva Kapor-Mater",
+    "email": "emily@emilyaviva.com"
+  },
   "contributors": [
     {
       "name": "Jason Studstill",
       "email": "jason@jasonstudstill.com"
+    },
+    {
+      "name": "Farhad Ahmed",
+      "email": "farhadahmed2007@gmail.com"
     }
   ],
   "license": "MIT",
@@ -26,7 +33,10 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
+<<<<<<< HEAD
     "jquery": "^2.1.4",
+=======
+>>>>>>> 00951ba71eddaead0c50c6b7c384fff920de2e80
     "jsonwebtoken": "^5.0.4",
     "mongoose": "^4.1.3"
   },
@@ -36,6 +46,7 @@
     "chai-http": "^1.0.0",
     "gulp": "^3.9.0",
     "gulp-exit": "0.0.2",
+    "gulp-html5-lint": "^1.0.1",
     "gulp-jshint": "^1.11.2",
     "gulp-mocha": "^2.1.3",
     "gulp-sass": "2.0.4",

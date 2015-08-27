@@ -51,11 +51,11 @@ var routes = (
   <Route name="home" path="/" handler={App}>
     <DefaultRoute handler={Home} />
     <Route name="user" path="/user" handler={User}>
-      <Route path="/user/:id" handler={User}/>
+      <Route name="userList" path=":userId" handler={User}/>
       <NotFoundRoute handler={Home} />
     </Route>
     <Route name="guest" path="/guest" handler={Guest}>
-      <Route path="/guest/:id" handler={Guest}/>
+      <Route name="guestList" path=":guestId" handler={Guest}/>
       <NotFoundRoute handler={Home} />
     </Route>
     <NotFoundRoute handler={Home} />

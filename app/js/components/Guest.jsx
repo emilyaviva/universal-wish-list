@@ -1,8 +1,57 @@
 var React = require('react');
+var request = require('superagent');
 
 // Guest View
 module.exports = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.func
+  },
+  getInitialState: function() {
+    return {
+      _id: this.context.router.getCurrentParams().guestId,
+      uniqueId: '',
+      creator: '',
+      name: '',
+      listItems: []
+    };
+  },
+  componentDidMount: function() {
+    request
+     .get('/api/w/' + this.state._id)
+     .end(function(err, res){
+        if (res.ok) {
+          console.log(res.body)
+          var items = JSON.stringify(res.body.items)
+          this.setState({
+            listItems: this.state.listItems.concat(JSON.parse(items)),
+            uniqueId: res.body.uniqueId,
+            creator: res.body.creator,
+            name: res.body.name
+          });
+        } else {
+          alert('Oh no! That is not a valid code \n ' + res.text);
+        }
+      }.bind(this));
+  },
   render: function() {
+    if (this.state.listItems.length) {
+      console.log(this.state._id);
+      console.log(this.state);
+      var listItems = this.state.listItems.map(function(item) {
+        return (
+          <article className="article-item">
+            <section className="description">
+              <h2>{item.description}</h2>
+              <a className="view-link" href={item.url}><button>View</button></a>
+            </section>
+            <section className="committed-to">
+              <img className="unchecked-box" src="http://www.clker.com/cliparts/3/h/N/y/5/p/empty-check-box-md.png" />
+              <button>I will get this for you</button>
+            </section>
+          </article>
+        )
+      });
+    }
     return (
       <main id="guest-view">
 
@@ -15,39 +64,7 @@ module.exports = React.createClass({
           </nav>
         </header>
 
-        <section id="category-section">
-          <button className="btn-category"><img className="category" src="lib/home168.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/basketball32.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/cellphone106.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/books30.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/tshirt18.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/makeup2.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/sedan3.png" /></button>
-        </section>
-
-        <article className="article-item">
-          <section className="description">
-            <h2>Under Armour Compression Shirt</h2>
-            <a className="view-link" href="https://www.underarmour.com/en-us/under-armour-alter-ego-compression-  tshirt/pid1244399-006"><button>View</button></a>
-          </section>
-          <section className="committed-to">
-            <img className="unchecked-box" src="http://www.clker.com/cliparts/3/h/N/y/5/p/empty-check-box-md.png" />
-            <button>I will get this for you</button>
-          </section>
-        </article>
-
-        <article className="article-item">
-          <section className="description">
-            <h2>Garmin Fenix 3 GPS Watch</h2>
-            <a className="view-link" href="http://www.rei.com/product/884614/garmin-fenix-3-gps-watch"><button>View</button></a>
-          </section>
-          <section className="committed-to">
-            <img className="unchecked-box" src="http://www.clipartbest.com/cliparts/ncX/jL6/ncXjL6rcB.png" />
-            <button>I will get this for you</button>
-          </section>
-        </article>
-
-        <div className="credit">Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+        {listItems}
 
       </main>
     );

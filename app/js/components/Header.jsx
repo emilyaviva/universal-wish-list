@@ -78,26 +78,53 @@ module.exports = React.createClass({
       alert('Enter a valid email address');
     }
   },
-  handleGuestSubmit: function(e) {
+  handleSearchSubmit: function(e) {
+    var currCode = this.state.listCode;
     e.preventDefault();
     this.setState({
       listCode: ''
     });
+    if (currCode.charAt(0) === 'u') {
+      alert('Private code!');
+    } else {
+      alert('Public code');
+    }
     if (this.state.listCode.length > 0) {
-      request
-       .get('/api/w/' + this.state.listCode)
-       .end(function(err, res){
-         if (res.ok) {
+      if (currCode.charAt(0) === 'u') {
+        request
+         .get('/api/w/u/' + currCode)
+         .end(function(err, res){
+          if (res.ok) {
             this.setState({
               viewingList: !this.state.viewingList
             });
             alert('yay got ' + JSON.stringify(res.body));
+            // Store current list in local storage
+            window.localStorage.setItem('wishListUniqueId', res.body.uniqueId);
             // Redirect to user page is res is successfull
-            this.transitionTo('guest');
-         } else {
+            this.transitionTo('user');
+          } else {
             alert('Oh no! That is not a valid code \n ' + res.text);
-         }
-       }.bind(this));
+          }
+        }.bind(this));
+      } else {
+        request
+         .get('/api/w/' + currCode)
+         .end(function(err, res){
+          if (res.ok) {
+            this.setState({
+              viewingList: !this.state.viewingList
+            });
+            alert('yay got ' + JSON.stringify(res.body));
+            // Store current list in local storage
+            window.localStorage.setItem('WishList', res.body._id);
+            // Redirect to user page is res is successfull
+            this.transitionTo('guest', {list: res.body});
+          } else {
+            alert('Oh no! That is not a valid code \n ' + res.text);
+          }
+        }.bind(this));
+      }
     } else {
       alert('Not a valid code');
     }
@@ -117,7 +144,7 @@ module.exports = React.createClass({
         <header className="headerWrapper">
           <nav id="header">
             <form className="createList headerWrapper">
-              <Link to="home" className="headerLinks" id="homeLink"> Home </Link>
+              <a href="#/home" className="headerLinks" id="homeLink"> Home </a>
               <input className="input-add-item" value={email} onChange={this.handleEmailChange} type="email" placeholder=" Your email address" required/>
               <input className="input-add-item" value={listName} onChange={this.handleListNameChange} type="text" placeholder=" Wishlist Name" required/>
               <button onClick={this.handleUserSubmit}>Create List</button>
@@ -131,9 +158,9 @@ module.exports = React.createClass({
         <header className="headerWrapper">
           <nav id="header">
             <form className="viewList headerWrapper">
-              <Link to="home" className="headerLinks" id="homeLink"> Home </Link>
+              <a href="#/home" className="headerLinks" id="homeLink"> Home </a>
               <input className="input-add-item" value={listCode} onChange={this.handleListCodeChange} type="text" placeholder=" Enter Code" required/>
-              <button onClick={this.handleGuestSubmit}>View List</button>
+              <button onClick={this.handleSearchSubmit}>View List</button>
               <button onClick={this.view}>Cancel</button>
             </form>
           </nav>
@@ -143,9 +170,9 @@ module.exports = React.createClass({
       return (
         <header className="headerWrapper">
           <nav id="header">
-            <Link to="home" className="headerLinks" id="homeLink"> Home </Link>
-            <a href="" className="headerLinks" onClick={this.create}> Create List </a>
-            <a href="" className="headerLinks" onClick={this.view}> View List</a>
+            <a href="#/home" className="headerLinks" id="homeLink"> Home </a>
+            <a href="" className="headerLinks noRedirect" onClick={this.create}> Create List </a>
+            <a href="" className="headerLinks noRedirect" onClick={this.view}> View List</a>
           </nav>
         </header>
       );

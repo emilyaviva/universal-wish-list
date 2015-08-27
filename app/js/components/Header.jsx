@@ -122,7 +122,8 @@ module.exports = React.createClass({
             window.localStorage.setItem('WishList', res.body._id);
             // Redirect to user page is res is successfull
             // this.transitionTo('guest', {list: res.body});
-            this.transitionTo('/guest/' + res.body._id)
+            this.transitionTo('/guest/' + res.body._id);
+            window.location.reload();
           } else {
             alert('Oh no! That is not a valid code \n ' + res.text);
           }

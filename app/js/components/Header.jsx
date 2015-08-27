@@ -62,12 +62,21 @@ module.exports = React.createClass({
        .post('/api/w')
        .send({ name: this.state.listName, creator: this.state.email})
        .set('Accept', 'application/json')
-       .end(function(err, res){
+       .end(function(err, res) {
          if (res.ok) {
             alert('yay got ' + JSON.stringify(res.body));
             this.setState({
               creatingList: !this.state.creatingList
             });
+
+
+              /**********************************
+
+                PUT EMAIL LOGIC HERE!
+
+              ***********************************/
+
+
             // Redirect to user page is res is successfull
             this.transitionTo('/user/' + res.body.uniqueId);
             window.location.reload();
@@ -147,12 +156,13 @@ module.exports = React.createClass({
       return (
         <header className="headerWrapper">
           <nav id="header">
-            <form className="createList headerWrapper">
+            <form className="createList headerWrapper pure-form">
               <a href="#/home" className="headerLinks" id="homeLink"> Home </a>
               <input className="input-add-item" value={email} onChange={this.handleEmailChange} type="email" placeholder=" Your email address" required/>
               <input className="input-add-item" value={listName} onChange={this.handleListNameChange} type="text" placeholder=" Wishlist Name" required/>
-              <button onClick={this.handleUserSubmit}>Create List</button>
-              <button onClick={this.create}>Cancel</button>
+              <button className="button-small pure-button" onClick={this.handleUserSubmit}>Create List</button>
+              <button className="button-small pure-button" onClick={this.create}>Cancel</button>
+              <span className="emptySpan"></span>
             </form>
           </nav>
         </header>
@@ -161,11 +171,12 @@ module.exports = React.createClass({
       return (
         <header className="headerWrapper">
           <nav id="header">
-            <form className="viewList headerWrapper">
+            <form className="viewList headerWrapper pure-form">
               <a href="#/home" className="headerLinks" id="homeLink"> Home </a>
               <input className="input-add-item" value={listCode} onChange={this.handleListCodeChange} type="text" placeholder=" Enter Code" required/>
-              <button onClick={this.handleSearchSubmit}>View List</button>
-              <button onClick={this.view}>Cancel</button>
+              <button className="button-small pure-button" onClick={this.handleSearchSubmit}>View List</button>
+              <button className="button-small pure-button" onClick={this.view}>Cancel</button>
+              <span className="emptySpan"></span>
             </form>
           </nav>
         </header>
@@ -177,6 +188,7 @@ module.exports = React.createClass({
             <a href="#/home" className="headerLinks" id="homeLink"> Home </a>
             <a href="" className="headerLinks noRedirect" onClick={this.create}> Create List </a>
             <a href="" className="headerLinks noRedirect" onClick={this.view}> View List</a>
+            <span className="emptySpan"></span>
           </nav>
         </header>
       );

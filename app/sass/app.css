@@ -226,6 +226,16 @@ body {
   margin-bottom: 10em;
 }
 
+/*About Page*/
+.h1-about {
+  text-align: center;
+}
+
+.p-about {
+  margin-left: 5em;
+  margin-right: 5em;
+}
+
 
 /****************************************
    Links and Psuedo Selectors

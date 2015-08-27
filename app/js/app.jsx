@@ -8,6 +8,7 @@ var Guest = require('./components/Guest.jsx');
 // var $Video = require('./jQuery/video.js');
 var $header = require('./jQuery/header.js');
 var Router = require('react-router');
+var About = require('./components/About.jsx')
 var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
@@ -40,7 +41,7 @@ var App = React.createClass({
     return (
       <div className="home">
         <Header />
-        <RouteHandler />
+        <About />
         <Footer />
       </div>
     );

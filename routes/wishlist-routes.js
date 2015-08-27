@@ -140,7 +140,7 @@ module.exports = function(router) {
             // Push the id of the new item to the wishlist's items array
             doc.items.push(data._id);
             doc.save();
-            res.json({msg: 'new item posted', id: data._id});
+            res.json({msg: 'new item posted', data: data});
           }
         });
       }

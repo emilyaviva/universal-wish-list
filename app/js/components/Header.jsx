@@ -6,6 +6,7 @@ var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
 var NotFoundRoute = Router.NotFoundRoute;
 var Link = Router.Link;
+var APP_URL =  'http://theuniversalwishlist.com';
 
 // Header
 module.exports = React.createClass({
@@ -65,23 +66,29 @@ module.exports = React.createClass({
        .end(function(err, res) {
          if (res.ok) {
             alert('yay got ' + JSON.stringify(res.body));
+            // Define variables in scope to be passed down in the next call
+            var uniqueId = res.body.uniqueId;
+            var _id = res.body._id;
             this.setState({
               creatingList: !this.state.creatingList
             });
-
-
-              /**********************************
-
-                PUT EMAIL LOGIC HERE!
-
-              ***********************************/
-
-
+            request
+              .post('/emailCreator')
+              .send({
+                to: res.body.creator,
+                uniqueLink: APP_URL + '/#/user/' + uniqueId,
+                publicLink: APP_URL + '/#/guest/' + _id
+                 })
+              .end(function(err, res) {
+                if (err) {
+                  console.error('Error: ' + err);
+                }
+              });
             // Redirect to user page is res is successfull
             this.transitionTo('/user/' + res.body.uniqueId);
             window.location.reload();
          } else {
-            alert('Oh no! error ' + res.text);
+            console.error('Error ' + res.text);
          }
        }.bind(this));
     } else {
@@ -103,7 +110,7 @@ module.exports = React.createClass({
       if (currCode.charAt(0) === 'u') {
         request
          .get('/api/w/u/' + currCode)
-         .end(function(err, res){
+         .end(function(err, res) {
           if (res.ok) {
             this.setState({
               viewingList: !this.state.viewingList

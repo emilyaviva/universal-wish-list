@@ -46,21 +46,25 @@ module.exports = React.createClass({
         if (res.ok) {
           var email = prompt(JSON.stringify(res.body));
           console.log(email);
+
+            request
+              .post('/emailBuyer')
+              .send({
+                to: email
+                 })
+              .end(function(err, res) {
+                if (err) {
+                  console.error('Error: ' + err)
+                }
+              });
           this.setState({
             buyerEmail: email
           })
-
-          /**********************************
-
-            PUT EMAIL LOGIC HERE!
-
-          ***********************************/
-
+          window.location.reload();
         } else {
-          alert('Server Error ' + err)
+          console.error('Server Error: ' + err)
         }
       }.bind(this));
-      window.location.reload();
   },
   render: function() {
     var itemName = this.state.itemName;

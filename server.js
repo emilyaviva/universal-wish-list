@@ -12,19 +12,15 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-var mongoUri = process.env.MONGO_WISHLIST_APP_URI || 'mongodb://localhost/wishlistApp';
+var mongoUri = process.env.MONGO_URI || 'mongodb://localhost/wishlistApp';
+
+var emailer = express.Router();
+require('./routes/emailer')(emailer);
+app.use('/emailer', emailer)
 
 var wishlistRoutes = express.Router();
 require('./routes/wishlist-routes')(wishlistRoutes);
 app.use('/api', wishlistRoutes);
-
-var authRoutes = express.Router();
-require('./routes/auth-routes')(authRoutes);
-app.use('/auth', authRoutes);
-
-var userRoutes = express.Router();
-require('./routes/user-routes')(userRoutes);
-app.use('/u', userRoutes);
 
 mongoose.connect(mongoUri, function(err) {
   if (err) console.error('MongoDB connection error:', err);

@@ -48,9 +48,16 @@ module.exports = React.createClass({
   },
   handleAddItem: function(e) {
     e.preventDefault();
+    // Check if URL is prefixed with 'http://' - If not, add it
+    var formattedURL = this.state.itemUrl.split('http://');
+    console.log(formattedURL);
+    if (formattedURL[0] !== 'http://') {
+      formattedURL = (['http://']).concat(formattedURL).join('');
+    }
+    console.log(formattedURL);
     request
       .post('/api/w/' + this.state._id + '/items')
-      .send({'description': this.state.itemName, 'url': this.state.itemUrl})
+      .send({'description': this.state.itemName, 'url': formattedURL})
       .end(function(err, res) {
         if (res.ok) {
           alert(JSON.stringify(res.body));

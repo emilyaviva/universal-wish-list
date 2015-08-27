@@ -5,7 +5,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <main id="about">
-        <h1 className="h1-about">About This App</h1>
+        <h1 className="h1-about">About Universal Wishlist</h1>
         <p className="p-about">
           Welcome to Universal Wishlist! This app will allow users to creat a wishlist
           of products and services from any website. From the main page, Create List
@@ -20,6 +20,7 @@ module.exports = React.createClass({
           like to send their wishlist too. The public link will allow people to commit to
           buying a wishlist item.
         </p>
+        <img id="make-wish" src="lib/wish.jpg" />
       </main>
     )
   }

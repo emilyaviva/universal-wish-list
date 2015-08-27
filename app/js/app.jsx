@@ -5,10 +5,10 @@ var Footer = require('./components/Footer.jsx');
 var Home = require('./components/Home.jsx');
 var User = require('./components/User.jsx');
 var Guest = require('./components/Guest.jsx');
+var About = require('./components/About.jsx')
 // var $Video = require('./jQuery/video.js');
 var $header = require('./jQuery/header.js');
 var Router = require('react-router');
-var About = require('./components/About.jsx')
 var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
@@ -41,7 +41,7 @@ var App = React.createClass({
     return (
       <div className="home">
         <Header />
-        <About />
+        <RouteHandler />
         <Footer />
       </div>
     );

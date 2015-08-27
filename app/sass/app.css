@@ -236,6 +236,14 @@ body {
   margin-right: 5em;
 }
 
+#make-wish {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 12em;
+  width: 18em;
+}
+
 
 /****************************************
    Links and Psuedo Selectors

@@ -69,7 +69,7 @@ module.exports = React.createClass({
               creatingList: !this.state.creatingList
             });
             // Redirect to user page is res is successfull
-            this.transitionTo('user');
+            this.transitionTo('/user/' + res.body.uniqueId);
          } else {
             alert('Oh no! error ' + res.text);
          }
@@ -102,7 +102,7 @@ module.exports = React.createClass({
             // Store current list in local storage
             window.localStorage.setItem('wishListUniqueId', res.body.uniqueId);
             // Redirect to user page is res is successfull
-            this.transitionTo('user');
+            this.transitionTo('/user/' + res.body.uniqueId);
           } else {
             alert('Oh no! That is not a valid code \n ' + res.text);
           }
@@ -119,7 +119,8 @@ module.exports = React.createClass({
             // Store current list in local storage
             window.localStorage.setItem('WishList', res.body._id);
             // Redirect to user page is res is successfull
-            this.transitionTo('guest', {list: res.body});
+            // this.transitionTo('guest', {list: res.body});
+            this.transitionTo('/guest/' + res.body._id)
           } else {
             alert('Oh no! That is not a valid code \n ' + res.text);
           }

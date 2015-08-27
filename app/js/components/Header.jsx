@@ -70,6 +70,7 @@ module.exports = React.createClass({
             });
             // Redirect to user page is res is successfull
             this.transitionTo('/user/' + res.body.uniqueId);
+            window.location.reload();
          } else {
             alert('Oh no! error ' + res.text);
          }
@@ -103,6 +104,7 @@ module.exports = React.createClass({
             window.localStorage.setItem('wishListUniqueId', res.body.uniqueId);
             // Redirect to user page is res is successfull
             this.transitionTo('/user/' + res.body.uniqueId);
+            window.location.reload();
           } else {
             alert('Oh no! That is not a valid code \n ' + res.text);
           }

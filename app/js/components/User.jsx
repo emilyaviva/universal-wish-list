@@ -1,8 +1,105 @@
 var React = require('react');
+var request = require('superagent');
 
 // User View
 module.exports = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.func
+  },
+  getInitialState: function() {
+    return {
+      uniqueId: this.context.router.getCurrentParams().userId,
+      _id: '',
+      creator: '',
+      name: '',
+      listItems: [],
+      itemName: '',
+      itemUrl: '',
+      itemNotes: ''
+    };
+  },
+  componentDidMount: function() {
+    request
+     .get('/api/w/u/' + this.state.uniqueId)
+     .end(function(err, res){
+        if (res.ok) {
+          console.log(res.body);
+          var items = JSON.stringify(res.body.items);
+          this.setState({
+            listItems: this.state.listItems.concat(JSON.parse(items)),
+            _id: res.body._id,
+            creator: res.body.creator,
+            name: res.body.name
+          });
+        } else {
+          alert('Oh no! That is not a valid code \n ' + res.text);
+        }
+      }.bind(this));
+  },
+  handleItemNameChange: function(event) {
+    this.setState({
+      itemName: event.target.value
+    });
+  },
+  handleItemUrlChange: function(event) {
+    this.setState({
+      itemUrl: event.target.value
+    })
+  },
+  handleAddItem: function(e) {
+    e.preventDefault();
+    request
+      .post('/api/w/' + this.state._id + '/items')
+      .send({'description': this.state.itemName, 'url': this.state.itemUrl})
+      .end(function(err, res) {
+        if (res.ok) {
+          alert(JSON.stringify(res.body));
+          this.setState({
+            listItems: this.state.listItems.concat([res.body.data])
+          })
+        } else {
+          alert('Server Error ' + err)
+        }
+      }.bind(this))
+  },
+  handleDelete: function(i, itemId) {
+    console.log(itemId);
+    var updatedListItems = this.state.listItems;
+    updatedListItems.splice(i, 1);
+    request
+      .del('/api/w/' + this.state._id + '/items/' + itemId)
+      .end(function(err, res) {
+        if (res.ok) {
+          alert(JSON.stringify(res.body));
+          this.setState({
+            listItems: updatedListItems
+          })
+        } else {
+          alert('Server Error ' + err)
+        }
+      }.bind(this))
+  },
   render: function() {
+    var itemName = this.state.itemName;
+    var itemUrl = this.state.itemUrl;
+    var handleDelete = this.state.handleDelete;
+
+    if (this.state.listItems.length) {
+      console.log(this.state);
+      var listItems = this.state.listItems.map(function(item, i) {
+        return (
+          <article className="article-item" >
+            <section className="description">
+              <h2>{item.description}</h2>
+              <a className="view-link" href={item.url}><button>View</button></a>
+            </section>
+            <section>
+              <button key={item._id} onClick={this.handleDelete.bind(this, i, item._id)} className="btn-delete">Delete Item</button>
+            </section>
+          </article>
+        );
+      }.bind(this));
+    }
     return (
       <main id="user-view">
 
@@ -15,48 +112,21 @@ module.exports = React.createClass({
           </nav>
         </header>
 
-        <section id="category-section">
-          <button className="btn-category"><img className="category" src="lib/home168.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/basketball32.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/cellphone106.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/books30.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/tshirt18.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/makeup2.png" /></button>
-          <button className="btn-category"><img className="category" src="lib/sedan3.png" /></button>
-        </section>
 
         <form className="frm-add-item">
           <label>Enter item name:
-            <input name="item-name" className="input-add-item" type="text" placeholder="Item name" />
+            <input value={itemName} onChange={this.handleItemNameChange} name="item-name" className="input-add-item" type="text" placeholder="Item name" />
           </label>
           <label>Enter item url:
-            <input name="item-url" className="input-add-item" type="text" placeholder="Item url" />
+            <input value={itemUrl} onChange={this.handleItemUrlChange} name="item-url" className="input-add-item" type="text" placeholder="Item url" />
           </label>
-          <button id="btn-add-item">Add new</button>
+          <button onClick={this.handleAddItem} id="btn-add-item">Add new</button>
         </form>
 
-        <article className="article-item">
-          <section className="description">
-            <h2>Under Armour Compression Shirt</h2>
-            <a className="view-link" href="https://www.underarmour.com/en-us/under-armour-alter-ego-compression-  tshirt/pid1244399-006"><button>View</button></a>
-          </section>
-          <section>
-            <button className="btn-delete">Delete Item</button>
-          </section>
-        </article>
-        <article className="article-item">
-          <section className="description">
-            <h2>Garmin Fenix 3 GPS Watch</h2>
-            <a className="view-link" href="http://www.rei.com/product/884614/garmin-fenix-3-gps-watch"><button>View</button></a>
-          </section>
-          <section>
-            <button className="btn-delete">Delete Item</button>
-          </section>
-        </article>
-
-        <div className="credit">Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+        {listItems}
 
       </main>
     )
   }
 })
+        // <UserListItem list={this.state.wishList} />

@@ -3,6 +3,7 @@
 var express = require('express');
 var router = express.Router;
 var bodyParser = require('body-parser');
+var bcrypt = require('bcrypt-nodejs');
 var mongoose = require('mongoose');
 var Wishlist = require('../models/wishlist-model');
 var Item = require('../models/item-model');
@@ -35,14 +36,40 @@ module.exports = function(router) {
       }
       else if (!wishlist) return res.status(404).json({msg: 'wishlist not found'});
       else res.json(wishlist);
+    }).populate('items')
+      .exec(function(err, wishlist) {
+        if (err) return handleError(err);
+        console.log(wishlist);
+    });
+  });
+
+  // GET a specific wishlist by uniqueID
+  router.get('/w/u/:id', function(req, res) {
+    Wishlist.findOne({uniqueId: req.params.id}, function(err, wishlist) {
+      if (err) {
+        res.status(500).json({msg: 'server error'});
+        return console.error(err);
+      }
+      else if (!wishlist) return res.status(404).json({msg: 'wishlist not found'});
+      else res.json(wishlist);
+    }).populate('items')
+      .exec(function(err, wishlist) {
+        if (err) return handleError(err);
+        console.log(wishlist);
     });
   });
 
   // POST to create a new wishlist
   router.post('/w', function(req, res) {
+    function replaceAll(string, s, r) {
+      return string.split(s).join(r);
+    }
+    var newUniqueId = bcrypt.hashSync(req.body.creator, bcrypt.genSaltSync(10), null);
+    newUniqueId = 'u' + replaceAll(newUniqueId, '/', 'u');
     new Wishlist({
       name: req.body.name,
       creator: req.body.creator,
+      uniqueId: newUniqueId,
       items: req.body.items
     }).save(function(err, data) {
       if (err) {
@@ -101,17 +128,22 @@ module.exports = function(router) {
       if (err || !doc) {
         res.status(500).json({msg: 'server error'});
         return console.error(err);
+      } else {
+        var newItem = new Item(req.body);
+        newItem.wishlist = doc._id;
+        newItem.save(function(err, data) {
+          if (err) {
+            res.status(500).json({msg: 'server error'});
+            console.error(err);
+          } else {
+            console.log(data);
+            // Push the id of the new item to the wishlist's items array
+            doc.items.push(data._id);
+            doc.save();
+            res.json({msg: 'new item posted', data: data});
+          }
+        });
       }
-      var newItem = new Item({
-        wishlist: doc._id,
-        description: req.body.description,
-        url: req.body.url,
-        image: req.body.image
-      });
-      newItem.save(function(err, data) {
-        if (err || !data) res.status(500).json({error: err});
-        else res.json({msg: 'new item posted', id: data._id});
-      });
     });
   });
 

@@ -5,6 +5,7 @@ var Footer = require('./components/Footer.jsx');
 var Home = require('./components/Home.jsx');
 var User = require('./components/User.jsx');
 var Guest = require('./components/Guest.jsx');
+var About = require('./components/About.jsx')
 // var $Video = require('./jQuery/video.js');
 var $header = require('./jQuery/header.js');
 var Router = require('react-router');

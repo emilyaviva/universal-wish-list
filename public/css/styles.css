@@ -1,0 +1,71 @@
+#icon-section {
+  display: inline-block;
+}
+
+#icon {
+  height: 5em;
+  width: 7em;
+  margin-right: 3em;
+}
+
+#header-nav {
+  display: inline-block;
+}
+
+header {
+  margin-bottom: 3em;
+}
+
+.category {
+  height: 5em;
+  width: 5em;
+}
+
+#category-section {
+  margin-bottom: 3em;
+  text-align: center;
+}
+
+.btn-category {
+  border-radius: 10%;
+  background-color: white;
+}
+
+form {
+  border-style: solid;
+  width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  padding: 1em;
+  text-align: center;
+}
+
+input {
+  height: 2em;
+  border-color: solid;
+}
+
+article {
+  border-style: solid;
+  width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  padding: 1em;
+}
+
+.description {
+  display: inline-block;
+}
+
+.committed-to {
+  margin-top: 1em;
+  display: inline-block;
+  float: right;
+}
+
+.unchecked-box {
+  height: 3em;
+  width: 3em;
+}

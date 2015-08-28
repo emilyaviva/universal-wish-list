@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 
 var wishlistSchema = new mongoose.Schema({
   name: {type: String},
-  creator: {type: String, ref: 'User'},
+  creator: {type: String},
+  uniqueId: {type: String},
   items: [{type: String, ref: 'Item'}]
 });
 

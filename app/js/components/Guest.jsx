@@ -12,7 +12,11 @@ module.exports = React.createClass({
       uniqueId: '',
       creator: '',
       name: '',
-      listItems: []
+      listItems: [],
+      itemName: '',
+      itemUrl: '',
+      itemNotes: '',
+      buyerEmail: ''
     };
   },
   componentDidMount: function() {
@@ -20,8 +24,7 @@ module.exports = React.createClass({
      .get('/api/w/' + this.state._id)
      .end(function(err, res){
         if (res.ok) {
-          console.log(res.body)
-          var items = JSON.stringify(res.body.items)
+          var items = JSON.stringify(res.body.items);
           this.setState({
             listItems: this.state.listItems.concat(JSON.parse(items)),
             uniqueId: res.body.uniqueId,
@@ -33,40 +36,59 @@ module.exports = React.createClass({
         }
       }.bind(this));
   },
+  handleCommitToBuy: function(i, itemId) {
+    request
+      .put('/api/w/' + this.state._id + '/items/' + itemId)
+      .send({promised: true})
+      .end(function(err, res) {
+        if (res.ok) {
+          var email = prompt('Enter your email address\n A confirmation link will be sent to you');
+            request
+              .post('/emailBuyer')
+              .send({
+                to: email
+                 })
+              .end(function(err, res) {
+                if (err) {
+                  console.error('Error: ' + err);
+                }
+              });
+          this.setState({
+            buyerEmail: email
+          });
+          window.location.reload();
+        } else {
+          console.error('Server Error: ' + err);
+        }
+      }.bind(this));
+  },
   render: function() {
+    var itemName = this.state.itemName;
+    var itemUrl = this.state.itemUrl;
+    var handleCommitToBuy = this.state.handleCommitToBuy;
+
     if (this.state.listItems.length) {
-      console.log(this.state._id);
-      console.log(this.state);
-      var listItems = this.state.listItems.map(function(item) {
+      var listItems = this.state.listItems.map(function(item, i) {
         return (
           <article className="article-item">
             <section className="description">
+              {
+                item.promised ? <button key={item._id} className="pure-button pure-button-disabled">Purchased</button> :
+                <button key={item._id} onClick={this.handleCommitToBuy.bind(this, i, item._id)} className="pure-button">Commit To Buy</button>
+              }
               <h2>{item.description}</h2>
-              <a className="view-link" href={item.url}><button>View</button></a>
-            </section>
-            <section className="committed-to">
-              <img className="unchecked-box" src="http://www.clker.com/cliparts/3/h/N/y/5/p/empty-check-box-md.png" />
-              <button>I will get this for you</button>
             </section>
           </article>
-        )
-      });
+        );
+      }.bind(this));
     }
     return (
       <main id="guest-view">
-
         <header className="title-header">
-          <section id="icon-section">
-            <img id="icon" src="lib/wishlist.png" />
-          </section>
-          <nav id="header-nav">
-            <a href="">About</a>
-          </nav>
+          <h1>{this.state.name}</h1>
         </header>
-
-        {listItems}
-
+        {listItems};
       </main>
     );
   }
-})
+});

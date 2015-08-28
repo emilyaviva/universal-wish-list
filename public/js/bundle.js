@@ -222,7 +222,7 @@ var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
 var NotFoundRoute = Router.NotFoundRoute;
 var Link = Router.Link;
-var APP_URL =  'http://theuniversalwishlist.com';
+var APP_URL =  'http://www.theuniversalwishlist.com';
 
 // Header
 module.exports = React.createClass({displayName: "exports",

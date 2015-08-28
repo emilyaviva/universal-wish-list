@@ -82,24 +82,24 @@ module.exports = React.createClass({displayName: "exports",
       React.createElement("main", {id: "about"}, 
         React.createElement("h1", {className: "h1-about"}, "About Universal Wishlist"), 
         React.createElement("p", {className: "p-about"}, 
-          "Welcome to Universal Wishlist! This app will allow users to creat a wishlist" + ' ' +
+          "Welcome to Universal Wishlist! This app allows users to create a wishlist" + ' ' +
           "of products and services from any website. From the main page, Create List" + ' ' +
-          "will allow users to create a new wishlist. This will take you to a page where a" + ' ' +
-          "user can add items to a wishlist by inputting a url and a name which they would" + ' ' +
-          "like the item to appear as inside their list."
+          "will allow users to create a new wishlist. This will take you to a page where" + ' ' +
+          "you can add items to a wishlist by inputting a name and url."
         ), 
         React.createElement("p", {className: "p-about"}, 
           "Once a list is created, a user will receive an email with two links: a private" + ' ' +
-          "link and a public link. the private link will allow users to view existing" + ' ' +
-          "wishlists. The public link is what they will share with anyone the user would" + ' ' +
-          "like to send their wishlist too. The public link will allow people to commit to" + ' ' +
-          "buying a wishlist item."
+          "link and a public link. The private link will allow users to view and edit existing" + ' ' +
+          "wishlists. The public link is meant to be shared with anyone and will allow" + ' ' +
+          "people to commit to buying a wishlist item."
         ), 
-        React.createElement("img", {id: "make-wish", src: "lib/wish.jpg"})
+        React.createElement("p", {className: "p-about"}, 
+          "Created by Jason Studstill, Emily Aviva Kapor-Mater, Farhad Ahmed"
+        )
       )
-    )
+    );
   }
-})
+});
 
 },{"react":206}],3:[function(require,module,exports){
 var React = require('react');
@@ -109,8 +109,9 @@ module.exports = React.createClass({displayName: "exports",
   render: function() {
     return (
       React.createElement("footer", {id: "footer"}, 
-        React.createElement("a", {className: "footerLinks", href: "https://github.com/emilyaviva/universal-wish-list"}, "Universal Wish List"), 
-        React.createElement("span", null, "Created by Emily Aviva Kapor-Mater, Farhad Ahmed, and Jason Studstill "), 
+        React.createElement("a", {className: "footerLinks", href: "https://github.com/emilyaviva/universal-wish-list"}, 
+          React.createElement("img", {src: "../lib/gh-light.png", alt: "gitHub logo"})
+        ), 
         React.createElement("a", {href: "#/about", className: "footerLinks"}, " About ")
       )
     );

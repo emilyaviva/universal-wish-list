@@ -192,6 +192,7 @@ module.exports = React.createClass({displayName: "exports",
         return (
           React.createElement("article", {className: "article-item"}, 
             React.createElement("section", {className: "description"}, 
+              React.createElement("button", {className: "pure-button"}, React.createElement("a", {className: "view-link", href: item.url}, "View")), 
               
                 item.promised ? React.createElement("button", {key: item._id, className: "pure-button pure-button-disabled"}, "Purchased") :
                 React.createElement("button", {key: item._id, onClick: this.handleCommitToBuy.bind(this, i, item._id), className: "pure-button"}, "Commit To Buy"), 

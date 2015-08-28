@@ -72,6 +72,7 @@ module.exports = React.createClass({
         return (
           <article className="article-item">
             <section className="description">
+              <button className="pure-button"><a className="view-link" href={item.url}>View</a></button>
               {
                 item.promised ? <button key={item._id} className="pure-button pure-button-disabled">Purchased</button> :
                 <button key={item._id} onClick={this.handleCommitToBuy.bind(this, i, item._id)} className="pure-button">Commit To Buy</button>

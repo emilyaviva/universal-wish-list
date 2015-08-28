@@ -3,24 +3,10 @@
 var express = require('express');
 var router = express.Router;
 var bodyParser = require('body-parser');
+var mailer = require('express-mailer');
 
 module.exports = function(router) {
   router.use(bodyParser.json());
-
-  mailer.extend(app, {
-    from: 'universalwishlist@gmail.com',
-    host: 'smtp.gmail.com',
-    secureConnection: true,
-    port: 465,
-    transportMethod: 'SMTP',
-    auth: {
-      user: process.env.EMAIL_ADDRESS,
-      pass: process.env.EMAIL_PASSWORD
-    }
-  });
-
-  router.set('views', '../email-views');
-  router.set('view engine', 'jade');
 
   router.post('/emailCreator', function(req, res, next) {
     router.mailer.send('email-to-creator', {

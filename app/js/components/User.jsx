@@ -23,7 +23,6 @@ module.exports = React.createClass({
      .get('/api/w/u/' + this.state.uniqueId)
      .end(function(err, res){
         if (res.ok) {
-          console.log(res.body);
           var items = JSON.stringify(res.body.items);
           this.setState({
             listItems: this.state.listItems.concat(JSON.parse(items)),
@@ -44,49 +43,44 @@ module.exports = React.createClass({
   handleItemUrlChange: function(event) {
     this.setState({
       itemUrl: event.target.value
-    })
+    });
   },
   handleAddItem: function(e) {
     e.preventDefault();
     // Check if URL is prefixed with 'http://' - If not, add it
     var formattedURL = this.state.itemUrl.split('http://');
-    console.log(formattedURL);
     if (formattedURL[0] !== 'http://') {
       formattedURL = (['http://']).concat(formattedURL).join('');
     }
-    console.log(formattedURL);
     request
       .post('/api/w/' + this.state._id + '/items')
       .send({'description': this.state.itemName, 'url': formattedURL})
       .end(function(err, res) {
         if (res.ok) {
-          alert(JSON.stringify(res.body));
           this.setState({
             listItems: this.state.listItems.concat([res.body.data]),
             itemName: '',
             itemUrl: ''
-          })
+          });
         } else {
-          alert('Server Error ' + err)
+          console.error('Server Error ' + err);
         }
-      }.bind(this))
+      }.bind(this));
   },
   handleDelete: function(i, itemId) {
-    console.log(itemId);
     var updatedListItems = this.state.listItems;
     updatedListItems.splice(i, 1);
     request
       .del('/api/w/' + this.state._id + '/items/' + itemId)
       .end(function(err, res) {
         if (res.ok) {
-          alert(JSON.stringify(res.body));
           this.setState({
             listItems: updatedListItems
-          })
+          });
         } else {
-          alert('Server Error ' + err)
+          console.error('Server Error: ' + err);
         }
-      }.bind(this))
+      }.bind(this));
   },
   render: function() {
     var itemName = this.state.itemName;

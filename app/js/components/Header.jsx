@@ -25,16 +25,13 @@ module.exports = React.createClass({
     this.setState({
       email: event.target.value
     });
-    console.log('email is: ' + this.state.email);
   },
   handleListNameChange: function(event) {
     this.setState({
       listName: event.target.value
     });
-    console.log('listName is: ' + this.state.listName);
   },
   handleListCodeChange: function(event) {
-    console.log('listCode is: ' + this.state.listCode);
     this.setState({
       listCode: event.target.value
     });
@@ -65,7 +62,6 @@ module.exports = React.createClass({
        .set('Accept', 'application/json')
        .end(function(err, res) {
          if (res.ok) {
-            alert('yay got ' + JSON.stringify(res.body));
             // Define variables in scope to be passed down in the next call
             var uniqueId = res.body.uniqueId;
             var _id = res.body._id;
@@ -101,11 +97,6 @@ module.exports = React.createClass({
     this.setState({
       listCode: ''
     });
-    if (currCode.charAt(0) === 'u') {
-      alert('Private code!');
-    } else {
-      alert('Public code');
-    }
     if (this.state.listCode.length > 0) {
       if (currCode.charAt(0) === 'u') {
         request
@@ -115,7 +106,6 @@ module.exports = React.createClass({
             this.setState({
               viewingList: !this.state.viewingList
             });
-            alert('yay got ' + JSON.stringify(res.body));
             // Store current list in local storage
             window.localStorage.setItem('wishListUniqueId', res.body.uniqueId);
             // Redirect to user page is res is successfull
@@ -133,7 +123,6 @@ module.exports = React.createClass({
             this.setState({
               viewingList: !this.state.viewingList
             });
-            alert('yay got ' + JSON.stringify(res.body));
             // Store current list in local storage
             window.localStorage.setItem('WishList', res.body._id);
             // Redirect to user page is res is successfull
@@ -181,7 +170,6 @@ module.exports = React.createClass({
             <form className="viewList headerWrapper pure-form">
               <a href="#/home" className="headerLinks" id="homeLink"> Home </a>
               <input className="input-add-item" value={listCode} onChange={this.handleListCodeChange} type="text" placeholder=" Enter Code" required/>
-              <button className="button-small pure-button" onClick={this.handleSearchSubmit}>View List</button>
               <button className="button-small pure-button" onClick={this.view}>Cancel</button>
               <span className="emptySpan"></span>
             </form>
@@ -194,7 +182,6 @@ module.exports = React.createClass({
           <nav id="header">
             <a href="#/home" className="headerLinks" id="homeLink"> Home </a>
             <a href="" className="headerLinks noRedirect" onClick={this.create}> Create List </a>
-            <a href="" className="headerLinks noRedirect" onClick={this.view}> View List</a>
             <span className="emptySpan"></span>
           </nav>
         </header>
@@ -202,3 +189,7 @@ module.exports = React.createClass({
     }
   }
 });
+
+  // <a href="" className="headerLinks noRedirect" onClick={this.view}> View List</a>
+  // <button className="button-small pure-button" onClick={this.handleSearchSubmit}>View List</button>
+

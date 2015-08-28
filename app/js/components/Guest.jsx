@@ -24,8 +24,7 @@ module.exports = React.createClass({
      .get('/api/w/' + this.state._id)
      .end(function(err, res){
         if (res.ok) {
-          console.log(res.body)
-          var items = JSON.stringify(res.body.items)
+          var items = JSON.stringify(res.body.items);
           this.setState({
             listItems: this.state.listItems.concat(JSON.parse(items)),
             uniqueId: res.body.uniqueId,
@@ -38,15 +37,12 @@ module.exports = React.createClass({
       }.bind(this));
   },
   handleCommitToBuy: function(i, itemId) {
-    console.log(itemId);
     request
       .put('/api/w/' + this.state._id + '/items/' + itemId)
       .send({promised: true})
       .end(function(err, res) {
         if (res.ok) {
-          var email = prompt(JSON.stringify(res.body));
-          console.log(email);
-
+          var email = prompt('Enter your email address\n A confirmation link will be sent to you');
             request
               .post('/emailBuyer')
               .send({
@@ -54,15 +50,15 @@ module.exports = React.createClass({
                  })
               .end(function(err, res) {
                 if (err) {
-                  console.error('Error: ' + err)
+                  console.error('Error: ' + err);
                 }
               });
           this.setState({
             buyerEmail: email
-          })
+          });
           window.location.reload();
         } else {
-          console.error('Server Error: ' + err)
+          console.error('Server Error: ' + err);
         }
       }.bind(this));
   },
@@ -83,7 +79,7 @@ module.exports = React.createClass({
               <h2>{item.description}</h2>
             </section>
           </article>
-        )
+        );
       }.bind(this));
     }
     return (
@@ -91,10 +87,8 @@ module.exports = React.createClass({
         <header className="title-header">
           <h1>{this.state.name}</h1>
         </header>
-
-        {listItems}
-
+        {listItems};
       </main>
     );
   }
-})
+});

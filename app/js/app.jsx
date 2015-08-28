@@ -54,6 +54,10 @@ var routes = (
       <Route name="userList" path=":userId" handler={User}/>
       <NotFoundRoute handler={Home} />
     </Route>
+    <Route name="guest" path="/guest" handler={Guest}>
+      <Route name="guestList" path=":guestId" handler={Guest}/>
+      <NotFoundRoute handler={Home} />
+    </Route>
     <Route name="about" path="/about" handler={About}>
       <NotFoundRoute handler={Home} />
     </Route>
@@ -61,13 +65,8 @@ var routes = (
   </Route>
 );
 
-    // <Route name="guest" path="/guest" handler={Guest}>
-    //   <Route name="guestList" path=":guestId" handler={Guest}/>
-    //   <NotFoundRoute handler={Home} />
-    // </Route>
 
 
 Router.run(routes, function (Handler) {
   React.render(<Handler/>, document.getElementById('content'));
 });
-

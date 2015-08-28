@@ -55,6 +55,10 @@ var routes = (
       React.createElement(Route, {name: "userList", path: ":userId", handler: User}), 
       React.createElement(NotFoundRoute, {handler: Home})
     ), 
+    React.createElement(Route, {name: "guest", path: "/guest", handler: Guest}, 
+      React.createElement(Route, {name: "guestList", path: ":guestId", handler: Guest}), 
+      React.createElement(NotFoundRoute, {handler: Home})
+    ), 
     React.createElement(Route, {name: "about", path: "/about", handler: About}, 
       React.createElement(NotFoundRoute, {handler: Home})
     ), 
@@ -62,10 +66,6 @@ var routes = (
   )
 );
 
-    // <Route name="guest" path="/guest" handler={Guest}>
-    //   <Route name="guestList" path=":guestId" handler={Guest}/>
-    //   <NotFoundRoute handler={Home} />
-    // </Route>
 
 
 Router.run(routes, function (Handler) {

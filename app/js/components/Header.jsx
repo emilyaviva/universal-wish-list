@@ -6,7 +6,7 @@ var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
 var NotFoundRoute = Router.NotFoundRoute;
 var Link = Router.Link;
-var APP_URL =  'http://theuniversalwishlist.com';
+var APP_URL =  'http://www.theuniversalwishlist.com';
 
 // Header
 module.exports = React.createClass({
@@ -192,4 +192,3 @@ module.exports = React.createClass({
 
   // <a href="" className="headerLinks noRedirect" onClick={this.view}> View List</a>
   // <button className="button-small pure-button" onClick={this.handleSearchSubmit}>View List</button>
-

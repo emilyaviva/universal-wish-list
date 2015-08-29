@@ -18,7 +18,7 @@ var Link = Router.Link;
 
 // Execute imported jQuery here:
 
-// $Video();
+$Video();
 $header();
 
 // Main App

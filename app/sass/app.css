@@ -4,16 +4,9 @@ body {
     padding:0;
     height:100%;
     font-family: Helvetica;
-    background-image: url('../lib/For_Wes.jpg');
-    /*background-color: rgba(229,229,229, 0.5);*/
-    background-repeat: no-repeat;
-    background-position: center;
+    background-color: rgba(229,229,229, 0.5);
+    background-repeat: repeat;
     background-size: cover;
-}
-
-.home {
-  height: auto;
-  width: auto;
 }
 
 #content {
@@ -146,85 +139,26 @@ input {
 ******************************************/
 
 .homepage-hero-module {
-  width: 100;
     border-right: none;
     border-left: none;
     position: relative;
-         display:-webkit-flex;
-     display:-ms-flexbox;
-     display:flex;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-align-content: stretch;
-        -ms-flex-line-pack: stretch;
-            align-content: stretch;
-    -webkit-align-items: stretch;
-        -ms-flex-align: stretch;
-            align-items: stretch;
 }
 .no-video .video-container video,
 .touch .video-container video {
     display: none;
-        position: relative;
-         display:-webkit-flex;
-     display:-ms-flexbox;
-     display:flex;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-align-content: stretch;
-        -ms-flex-line-pack: stretch;
-            align-content: stretch;
-    -webkit-align-items: stretch;
-        -ms-flex-align: stretch;
-            align-items: stretch;
-
 }
 .no-video .video-container .poster,
 .touch .video-container .poster {
-    /*display: block !important;*/
-        display: none;
-        position: relative;
-         display:-webkit-flex;
-     display:-ms-flexbox;
-     display:flex;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-align-content: stretch;
-        -ms-flex-line-pack: stretch;
-            align-content: stretch;
-    -webkit-align-items: stretch;
-        -ms-flex-align: stretch;
-            align-items: stretch;
+    display: block !important;
 }
 .video-container {
     position: relative;
-    top: 0%;
+    bottom: 0%;
     left: 0%;
     height: 100%;
+    width: 100%;
     overflow: hidden;
     background: #000;
-    vertical-align: middle;
 }
 .video-container .poster img {
     width: 100%;
@@ -233,7 +167,7 @@ input {
 }
 .video-container .filter {
     z-index: 0;
-    position: static;
+    position: absolute;
     background: rgba(0, 0, 0, 0.4);
     width: 100%;
 }
@@ -246,40 +180,9 @@ input {
     width: 100%;
 }
 
-.poster-wrapper {
-  display:-webkit-flex;
-  display:-ms-flexbox;
-  display:flex;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: flex-start;
-          justify-content: flex-start;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.poster {
-    background-image: url('../lib/For_Wes.jpg');
-    background-repeat:no-repeat;
-    /* custom background-position */
-    background-position:50% 50%;
-    /* ie8- graceful degradation */
-    background-position:50% 50%9 !important;
-
-}
-
 /********************************************
 
-/*******************************************
+/********************************************/
 
 /* Main */
 #user-view, #guest-view, #about {

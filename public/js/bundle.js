@@ -567,21 +567,47 @@ module.exports = React.createClass({displayName: "exports",
 var React = require('react');
 
 module.exports = React.createClass({displayName: "exports",
+  getInitialState: function() {
+    return {windowWidth: window.innerWidth};
+  },
+
+  handleResize: function(e) {
+    this.setState({windowWidth: window.innerWidth});
+  },
+
+  componentDidMount: function() {
+    window.addEventListener('resize', this.handleResize);
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+
   render: function() {
-    return (
-      React.createElement("div", {className: "homepage-hero-module"}, 
-        React.createElement("div", {className: "video-container"}, 
-          React.createElement("div", {className: "filter"}), 
-            React.createElement("video", {autoPlay: true, loop: true, className: "fillWidth"}, 
-              React.createElement("source", {src: "../lib/For_Wes.mp4", type: "video/mp4"}), "Your browser does not support the video tag. I suggest you upgrade your browser.", 
-              React.createElement("source", {src: "../lib/For_Wes.webm", type: "video/webm"}), "Your browser does not support the video tag. I suggest you upgrade your browser."
-            ), 
-          React.createElement("div", {class: "poster hidden"}, 
-              React.createElement("img", {src: "./lib/For_Wes.jpg", alt: "Online Shopping"})
+    console.log("Current window width: " + this.state.windowWidth);
+    if (this.state.windowWidth < 1150) {
+      return (
+        React.createElement("div", null, 
+          React.createElement("section", {className: "poster-wrapper"}
           )
         )
-      )
-    );
+      );
+    } else {
+      return (
+        React.createElement("div", {className: "homepage-hero-module"}, 
+          React.createElement("div", {className: "video-container"}, 
+            React.createElement("div", {className: "filter"}), 
+              React.createElement("video", {autoPlay: true, loop: true, className: "fillWidth"}, 
+                React.createElement("source", {src: "../lib/For_Wes.mp4", type: "video/mp4"}), "Your browser does not support the video tag. I suggest you upgrade your browser.", 
+                React.createElement("source", {src: "../lib/For_Wes.webm", type: "video/webm"}), "Your browser does not support the video tag. I suggest you upgrade your browser."
+              ), 
+            React.createElement("div", {className: "poster hidden"}, 
+                React.createElement("img", {src: "./lib/For_Wes.jpg", alt: "Online Shopping"})
+            )
+          )
+        )
+      );
+    }
   }
 });
 
@@ -621,7 +647,8 @@ module.exports = function() {
 
   function scaleVideoContainer() {
 
-      var height = $(window).height() + 5;
+      // Take into account the width of the header bar
+      var height = $(window).height() - 75;
       var unitHeight = parseInt(height) + 'px';
       $('.homepage-hero-module').css('height',unitHeight);
 
@@ -652,7 +679,7 @@ module.exports = function() {
 
           $(this).width(windowWidth);
 
-          if(windowWidth < 1000){
+          if(windowWidth < 1500){
               videoHeight = windowHeight;
               videoWidth = videoHeight / videoAspectRatio;
               $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});

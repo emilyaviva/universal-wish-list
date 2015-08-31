@@ -23,7 +23,6 @@ module.exports = React.createClass({
       return (
         <div>
           <section className="poster-wrapper">
-            <img className="poster" src="./lib/For_Wes.jpg" alt="Online Shopping" />
           </section>
         </div>
       );

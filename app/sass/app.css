@@ -153,12 +153,12 @@ input {
 }
 .video-container {
     position: relative;
-    bottom: 0%;
+    top: 0%;
     left: 0%;
     height: 100%;
-    width: 100%;
     overflow: hidden;
     background: #000;
+    vertical-align: middle;
 }
 .video-container .poster img {
     width: 100%;
@@ -167,7 +167,7 @@ input {
 }
 .video-container .filter {
     z-index: 0;
-    position: absolute;
+    position: static;
     background: rgba(0, 0, 0, 0.4);
     width: 100%;
 }
@@ -178,6 +178,27 @@ input {
 }
 .video-container video.fillWidth {
     width: 100%;
+}
+
+.poster-wrapper {
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 /********************************************

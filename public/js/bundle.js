@@ -98,13 +98,19 @@ module.exports = React.createClass({displayName: "exports",
         ), 
         React.createElement("section", {className: "bio"}, 
           React.createElement("div", {id: "jason"}, 
-            React.createElement("img", {src: "../lib/jason.jpg", alt: "jason studstill headshot"})
+            React.createElement("a", {href: "https://www.linkedin.com/in/jasonstudstill"}, 
+              React.createElement("img", {src: "../lib/jason.jpg", alt: "jason studstill headshot"})
+            )
           ), 
           React.createElement("div", {id: "emily"}, 
-            React.createElement("img", {src: "../lib/emily.jpg", alt: "emily aviva kapor-mater headshot"})
+            React.createElement("a", {href: "https://www.linkedin.com/in/emilykapor"}, 
+              React.createElement("img", {src: "../lib/emily.jpg", alt: "emily aviva kapor-mater headshot"})
+            )
           ), 
           React.createElement("div", {id: "farhad"}, 
-            React.createElement("img", {src: "../lib/farhad.jpg", alt: "farhad ahmed headshot"})
+            React.createElement("a", {href: "https://www.linkedin.com/in/farhadahmed"}, 
+              React.createElement("img", {src: "../lib/farhad.jpg", alt: "farhad ahmed headshot"})
+            )
           )
         )
       )

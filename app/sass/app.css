@@ -490,13 +490,20 @@ input {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: space-between;
-    align-items: center;
+    align-content: center;
+    align-items: space-around;
 }
 
-#jason, #emily, #farhad {
-  filter: grayscale(100%);
-  padding: 2em;
+
+.bio img{
+  height: 300px;
+  padding: 2em 2em 0 2em;
+  opacity: 0.885;
+}
+
+.bio img:hover {
+  opacity: 1.0;
+  cursor: pointer;
 }
 
 /****************************************

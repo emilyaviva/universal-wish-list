@@ -648,7 +648,7 @@ module.exports = function() {
   function scaleVideoContainer() {
 
       // Take into account the width of the header bar
-      var height = $(window).height() - 75;
+      var height = $(window).height() - 5;
       var unitHeight = parseInt(height) + 'px';
       $('.homepage-hero-module').css('height',unitHeight);
 
@@ -668,7 +668,7 @@ module.exports = function() {
   function scaleBannerVideoSize(element){
 
       var windowWidth = $(window).width(),
-      windowHeight = $(window).height() + 5,
+      windowHeight = $(window).height() + 50,
       videoWidth,
       videoHeight;
 
@@ -679,7 +679,7 @@ module.exports = function() {
 
           $(this).width(windowWidth);
 
-          if(windowWidth < 1500){
+          if(windowWidth < 2000){
               videoHeight = windowHeight;
               videoWidth = videoHeight / videoAspectRatio;
               $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});

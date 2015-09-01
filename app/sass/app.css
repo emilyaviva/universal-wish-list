@@ -62,8 +62,8 @@ body {
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -webkit-align-content: center;
-        -ms-flex-line-pack: center;
+    -ms-flex-line-pack: center;
+        -webkit-align-content: center;
             align-content: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
@@ -117,8 +117,8 @@ input {
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -webkit-align-content: center;
-        -ms-flex-line-pack: center;
+    -ms-flex-line-pack: center;
+        -webkit-align-content: center;
             align-content: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
@@ -162,8 +162,8 @@ input {
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -webkit-align-content: stretch;
-        -ms-flex-line-pack: stretch;
+    -ms-flex-line-pack: stretch;
+        -webkit-align-content: stretch;
             align-content: stretch;
     -webkit-align-items: stretch;
         -ms-flex-align: stretch;
@@ -185,8 +185,8 @@ input {
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -webkit-align-content: stretch;
-        -ms-flex-line-pack: stretch;
+    -ms-flex-line-pack: stretch;
+        -webkit-align-content: stretch;
             align-content: stretch;
     -webkit-align-items: stretch;
         -ms-flex-align: stretch;
@@ -210,8 +210,8 @@ input {
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -webkit-align-content: stretch;
-        -ms-flex-line-pack: stretch;
+    -ms-flex-line-pack: stretch;
+        -webkit-align-content: stretch;
             align-content: stretch;
     -webkit-align-items: stretch;
         -ms-flex-align: stretch;
@@ -260,8 +260,8 @@ input {
   -webkit-justify-content: flex-start;
       -ms-flex-pack: flex-start;
           justify-content: flex-start;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
+  -ms-flex-line-pack: center;
+      -webkit-align-content: center;
           align-content: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
@@ -296,8 +296,8 @@ input {
   -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-align-content: flex-start;
-      -ms-flex-line-pack: start;
+  -ms-flex-line-pack: start;
+      -webkit-align-content: flex-start;
           align-content: flex-start;
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
@@ -414,8 +414,8 @@ input {
   -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-align-content: stretch;
-      -ms-flex-line-pack: stretch;
+  -ms-flex-line-pack: stretch;
+      -webkit-align-content: stretch;
           align-content: stretch;
   -webkit-align-items: center;
       -ms-flex-align: center;
@@ -436,8 +436,8 @@ input {
     -webkit-justify-content: flex-start;
         -ms-flex-pack: start;
             justify-content: flex-start;
-    -webkit-align-content: center;
-        -ms-flex-line-pack: center;
+    -ms-flex-line-pack: center;
+        -webkit-align-content: center;
             align-content: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
@@ -486,12 +486,24 @@ input {
 /*******************************************/
 
 .bio {
+    display:-webkit-flex;
+    display:-ms-flexbox;
     display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    align-items: space-around;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center;
+    -webkit-align-items: space-around;
+        -ms-flex-align: space-around;
+            align-items: space-around;
 }
 
 

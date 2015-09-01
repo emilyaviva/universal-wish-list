@@ -23,13 +23,19 @@ module.exports = React.createClass({
         </p>
         <section className="bio">
           <div id="jason">
-            <img src="../lib/jason.jpg" alt="jason studstill headshot"/>
+            <a href="https://www.linkedin.com/in/jasonstudstill">
+              <img src="../lib/jason.jpg" alt="jason studstill headshot"/>
+            </a>
           </div>
           <div id="emily">
-            <img src="../lib/emily.jpg" alt="emily aviva kapor-mater headshot"/>
+            <a href="https://www.linkedin.com/in/emilykapor">
+              <img src="../lib/emily.jpg" alt="emily aviva kapor-mater headshot"/>
+            </a>
           </div>
           <div id="farhad">
-            <img src="../lib/farhad.jpg" alt="farhad ahmed headshot"/>
+            <a href="https://www.linkedin.com/in/farhadahmed">
+              <img src="../lib/farhad.jpg" alt="farhad ahmed headshot"/>
+            </a>
           </div>
         </section>
       </main>

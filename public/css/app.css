@@ -57,8 +57,8 @@ body {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-content: center;
   -ms-flex-line-pack: center;
+  -webkit-align-content: center;
   align-content: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -106,8 +106,8 @@ input {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-content: center;
   -ms-flex-line-pack: center;
+  -webkit-align-content: center;
   align-content: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -143,8 +143,8 @@ input {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
+  -webkit-align-content: stretch;
   align-content: stretch;
   -webkit-align-items: stretch;
   -ms-flex-align: stretch;
@@ -166,8 +166,8 @@ input {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
+  -webkit-align-content: stretch;
   align-content: stretch;
   -webkit-align-items: stretch;
   -ms-flex-align: stretch;
@@ -190,8 +190,8 @@ input {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
+  -webkit-align-content: stretch;
   align-content: stretch;
   -webkit-align-items: stretch;
   -ms-flex-align: stretch;
@@ -239,8 +239,8 @@ input {
   -webkit-justify-content: flex-start;
   -ms-flex-pack: flex-start;
   justify-content: flex-start;
-  -webkit-align-content: center;
   -ms-flex-line-pack: center;
+  -webkit-align-content: center;
   align-content: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -272,8 +272,8 @@ input {
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  -webkit-align-content: flex-start;
   -ms-flex-line-pack: start;
+  -webkit-align-content: flex-start;
   align-content: flex-start;
   -webkit-align-items: flex-start;
   -ms-flex-align: start;
@@ -374,8 +374,8 @@ input {
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
+  -webkit-align-content: stretch;
   align-content: stretch;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -394,8 +394,8 @@ input {
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  -webkit-align-content: center;
   -ms-flex-line-pack: center;
+  -webkit-align-content: center;
   align-content: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -435,16 +435,33 @@ input {
   About Page
 /*******************************************/
 .bio {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
   justify-content: center;
-  align-content: space-between;
-  align-items: center; }
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: space-around;
+  -ms-flex-align: space-around;
+  align-items: space-around; }
 
-#jason, #emily, #farhad {
-  filter: grayscale(100%);
-  padding: 2em; }
+.bio img {
+  height: 300px;
+  padding: 2em 2em 0 2em;
+  opacity: 0.885; }
+
+.bio img:hover {
+  opacity: 1.0;
+  cursor: pointer; }
 
 /****************************************
    Links and Psuedo Selectors

@@ -222,6 +222,7 @@ input {
     top: 0%;
     left: 0%;
     height: 100%;
+    width:100%;
     overflow: hidden;
     background: #000;
     vertical-align: middle;
@@ -304,6 +305,7 @@ input {
   height: 100%;
   width: 100%;
   padding: 4em 0 6em;
+  background-color: rgb(229,229,229);
 }
 
 #about {
@@ -479,6 +481,23 @@ input {
   width: 18em;
 }
 
+/********************************************
+  About Page
+/*******************************************/
+
+.bio {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+    align-items: center;
+}
+
+#jason, #emily, #farhad {
+  filter: grayscale(100%);
+  padding: 2em;
+}
 
 /****************************************
    Links and Psuedo Selectors

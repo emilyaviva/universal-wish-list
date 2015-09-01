@@ -21,6 +21,17 @@ module.exports = React.createClass({
         <p className="p-about">
           Created by Jason Studstill, Emily Aviva Kapor-Mater, Farhad Ahmed
         </p>
+        <section className="bio">
+          <div id="jason">
+            <img src="../lib/jason.jpg" alt="jason studstill headshot"/>
+          </div>
+          <div id="emily">
+            <img src="../lib/emily.jpg" alt="emily aviva kapor-mater headshot"/>
+          </div>
+          <div id="farhad">
+            <img src="../lib/farhad.jpg" alt="farhad ahmed headshot"/>
+          </div>
+        </section>
       </main>
     );
   }
